@@ -18,5 +18,9 @@
   "dependencies": {
     "global": "^4.4.0",
     "truffle": "^5.1.0"
+  },
+  "resolutions": {
+    "eth-lib/keccakjs/sha3": "^1.2.3",
+    "web3/web3-eth/web3-eth-accounts/scrypt.js": "^0.3.0"
   }
 }
