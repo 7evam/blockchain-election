@@ -43,10 +43,12 @@ App = {
       // This is a known issue with Metamask
       // https://github.com/MetaMask/metamask-extension/issues/2393
       instance.votedEvent({}, {
+        // subscribe to entire blockchain
         fromBlock: 0,
         toBlock: 'latest'
       }).watch(function(error, event) {
-        console.log("event triggered", event)
+        console.log("event triggered")
+        console.log(event)
         // Reload when a new vote is recorded
         App.render();
       });
