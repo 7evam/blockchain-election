@@ -19,6 +19,10 @@ contract Election {
   // Store Candidates Count
   uint public candidatesCount;
 
+  event votedEvent (
+    uint indexed _candidateId
+  );
+
   constructor() public {
     addCandidate("Pecan");
     addCandidate("Maple Bourbon Brown Butter Peach");
@@ -47,6 +51,9 @@ contract Election {
 
     // update candidate vote Count
     candidates[_candidateId].voteCount++;
+
+    // trigger voted event
+    votedEvent(_candidateId)
   }
 
 }

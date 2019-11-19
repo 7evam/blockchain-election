@@ -63,9 +63,10 @@ App = {
     content.show();
 
     // Load account data
-    web3.eth.getAccounts(function(err, accounts) {
+    web3.eth.getAccounts(function(err, account) {
       if (err === null) {
-        $("#accountAddress").html("Your Account: " + accounts[0]);
+        App.account = account
+        $("#accountAddress").html("Your Account: " + account);
       }
     });
 
@@ -111,7 +112,9 @@ App = {
   castVote: function() {
     var candidateId = $('#candidatesSelect').val();
     App.contracts.Election.deployed().then(function(instance) {
-      return instance.vote(candidateId, { from: App.account });
+      console.log(candidateId)
+      console.log(App.account[0])
+      return instance.vote(candidateId, { from: App.account[0] });
     }).then(function(result) {
       // Wait for votes to update
       $("#content").hide();
